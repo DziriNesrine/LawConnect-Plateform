@@ -1,0 +1,537 @@
+/*---body--*/
+
+
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+
+.table{
+    margin-left: 35px;
+    width: 1100px;
+}
+
+.table  .col1{
+    width: 110px;
+    font-family: cursive;
+}
+.table  .col2{
+  width: 180px;
+  font-family: cursive;
+}
+.table  .col3{
+  width: 100px;
+  font-family: cursive;
+}
+.table .col4{
+  width: 170px;
+  font-family: cursive;
+}
+.table .col5{
+  width: 150px;
+  font-family: cursive;
+}
+.table .col6{
+  width: 130px;
+  font-family: cursive;
+}
+.table .col7{
+  width: 110px;
+  font-family: cursive;
+}
+.table .col8{
+  width: 110px;
+  font-family: cursive;
+}
+.table .col9{
+  width: 130px;
+}
+.btn{
+  width: 80px;
+  border-radius: 30px;
+}
+.title{
+  margin-left: 350px;
+  margin-bottom: 30px;
+  margin-top: -30px;
+  font-family: cursive;
+  color: #D2AE6D;
+
+}
+.card1 {
+  font-family: cursive;
+  font-size: 30px;
+  background-color: #cccac7;
+  width: 700px;
+  border-radius: 30px;
+  padding: 10px;
+  margin-left: 250px;
+
+}
+
+
+
+/*----popup profil card--*/
+
+
+
+/* Please ❤ this if you like it! */
+
+
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked){
+position: absolute;
+left: -9999px;
+
+}
+.modal-btn:checked + label,
+.modal-btn:not(:checked) + label{
+position: inherit;
+
+font-family: 'Poppins', sans-serif;
+font-weight: 500;
+font-size: 16px;
+line-height: 2.5;
+margin-bottom: -30%;
+height: 40px;
+transition: all 200ms linear;
+border-radius: 18px;
+width: 80px;
+letter-spacing: 2px;
+margin-left: 10px;
+justify-content: center;
+text-align: center;
+align-self: center;
+border: none;
+cursor: pointer;
+background-color: #fff;
+color: #D2AE6D;
+
+}
+
+.modal-btn:checked + label .uil,
+.modal-btn:not(:checked) + label .uil{
+margin-left: 10px;
+font-size: 15px;
+
+}
+
+
+.modal-btn:checked + label:after,
+.modal-btn:not(:checked) + label:after{
+position: fixed;
+top: 30px;
+right: 50px;
+z-index: 110;
+width: 40px;
+border-radius: 3px;
+height: 30px;
+text-align: center;
+line-height: 30px;
+font-size: 18px;
+font-family: 'unicons';
+content: '\eac6';
+background-color: #D2AE6D;
+color: #fff;
+transition: all 200ms linear;
+opacity: 0;
+pointer-events: none;
+transform: translateY(20px);
+
+}
+.modal-btn:checked + label:hover:after,
+.modal-btn:not(:checked) + label:hover:after{
+background-color: #87afc2;
+color: #fff;
+
+}
+.modal-btn:checked + label:after{
+transition: opacity 300ms 300ms ease, transform 300ms 300ms ease, background-color 250ms linear, color 250ms linear;
+opacity: 1;
+pointer-events: auto;
+transform: translateY(0);
+}
+.modal{
+display: block;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+-ms-flex-pack: center;
+justify-content: center;
+margin: 0 auto;
+top: 0;
+left: 0;
+width: 100%;
+
+z-index: 100;
+
+background-color: rgba(31,32,41,.75);
+pointer-events: none;
+opacity: 0;
+transition: opacity 250ms 700ms ease;
+}
+.modal-btn:checked ~ .modal{
+pointer-events: auto;
+opacity: 1;
+transition: all 300ms ease-in-out;
+}
+.modal-wrap {
+position: relative;
+display: block;
+width: 100%;
+max-width: 400px;
+margin: 0 auto;
+margin-top: 20px;
+margin-bottom: 20px;
+border-radius: 4px;
+overflow: hidden;
+padding-bottom: 20px;
+background-color: #fff;
+  -ms-flex-item-align: center;
+  align-self: center;
+  box-shadow: 0 12px 25px 0 rgba(199,175,189,.25);
+opacity: 0;
+transform: scale(0.6);
+transition: opacity 250ms 250ms ease, transform 300ms 250ms ease;
+}
+.modal-wrap img {
+display: block;
+width: 100%;
+
+}
+.modal-wrap p {
+padding: 20px 30px 0 30px;
+}
+.modal-btn:checked ~ .modal .modal-wrap{
+opacity: 1;
+transform: scale(1);
+transition: opacity 250ms 500ms ease, transform 350ms 500ms ease;
+}
+@media screen and (max-width: 500px) {
+.modal-wrap {
+  width: calc(100% - 40px);
+  padding-bottom: 15px;
+}
+.modal-wrap p {
+  padding: 15px 20px 0 20px;
+}
+}
+
+
+
+
+
+/*de5il il pop up*/
+img {
+  max-width: 100%;
+
+  vertical-align: bottom;
+}
+.recipe-card {
+
+  margin-bottom: 50px;
+  background: #fff;
+  margin: 2em auto;
+  width: 90%;
+
+
+
+
+}
+
+.recipe-card article {
+  padding: 1.25em 1.5em;
+}
+.recipe-card article ul {
+  list-style: none;
+  margin: 0.5em 0 0;
+  padding: 0;
+}
+.recipe-card article ul li {
+  display: inline-block;
+  margin-left: 1em;
+  line-height: 1em;
+}
+.recipe-card article ul li:first-child {
+  margin-left: 0;
+}
+.recipe-card article ul li .icon {
+  vertical-align: bottom;
+}
+.recipe-card article ul li span:nth-of-type(2) {
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  font-weight: 300;
+  vertical-align: middle;
+  color: #838689;
+}
+.recipe-card article h2, .recipe-card article h3 {
+  margin: 0;
+  font-weight: 300;
+}
+.recipe-card article h2 {
+  font-size: em(28);
+  color: #222;
+}
+.recipe-card article h3 {
+  font-size: em(15);
+  color: #838689;
+}
+.recipe-card article p {
+  margin: 1.25em 0;
+  font-size: em(13);
+  font-weight: 400;
+  color: #222;
+}
+.recipe-card article p span {
+  font-weight: 700;
+  color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*il card ili de5il il popup*/
+.Main-card .card-head{
+  background-image: url(http://lmpixels.com/wp/aveo/wp-content/uploads/2017/09/sp_main_bg.png);
+  background-size: cover;
+  background-color: #D2AE6D;
+
+  border-radius: 10px;
+}
+.Main-card .Title{
+  width: 70%;
+  text-align: center;
+  text-decoration: #9fa2ba;
+  margin-top: 50px;
+  display: inline;
+  margin-left: 180px;
+}
+.Main-card .Title h1{
+  color: white;
+  text-transform: capitalize;
+  font-size: 50px;
+  padding-bottom: 25px;
+  font-weight: bold;
+}
+.Main-card .Title p{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: -10px;
+  text-transform: capitalize;
+}
+
+
+
+.Main-card .about  h2{
+  text-transform: capitalize;
+}
+.Main-card .about  h2 span
+{
+  color:#53C7A8;
+  text-transform: capitalize;
+}
+.Main-card .about{
+  width: 50%;
+  float: left;
+  margin-right: 40px;
+}
+
+.Main-card .about p{
+  margin: 15px 0 40px 0;
+  line-height: 25px;
+  text-transform: capitalize;
+  color: #585858
+}
+.Main-card .about a{
+  margin-top: 40px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border: 1px solid #c7c2c2;
+  border-radius: 5px;
+  box-shadow: 4px 3px 7px 0px #D2AE6D;
+}
+
+.Main-card .about a:hover{
+  box-shadow: 2px 2px 19px 1px #D2AE6D;
+}
+
+.Main-card .table1 {
+  text-transform: capitalize;
+  padding: 6px;
+min-width: 135px;
+text-transform: none;
+font-weight: bold;
+  color: #585858;
+  color: grey;
+}
+
+
+/*card ordonace */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800%7CRaleway:100,200,300,400,600,700,800,900%7CMontserrat:100,200,300,400,500,600,700,800,900');
+.box-shadow {
+ box-shadow: 0px 0px 18px -3px rgba(143, 143, 143, .50);
+}
+.card:hover {
+ box-shadow: 0px 0px 20px -3px rgba(143, 143, 143, .75);
+}
+.box-shadow-dark {
+ box-shadow: 3px 3px 11px -3px rgba(0, 0, 0, .25);
+}
+body {
+ font-family: 'Open Sans', Arial, Verdana;
+}
+
+.font-weight-bolder {
+ font-weight: 900;
+}
+.display-1, .display-2, .display-3, .display-4 {
+ font-weight: 900;
+}
+
+
+.card {
+ transition: 0.5s ease;
+ border-radius: 0;
+ transform: perspective(3em) rotateX(0deg) rotateY(-1.175deg) rotateZ(-1deg);
+}
+.card-header {
+ border-radius: 0;
+}
+.card-footer {
+ padding-top: 1rem;
+ padding-bottom: 1rem;
+}
+.card-header, .card-footer {
+ transition: 0.5s ease;
+}
+.card:hover {
+ transform: perspective(0em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+.card:hover .card-header, .card:hover .card-footer {
+background-color: #ffeeba;
+}
+
+.card-body {
+ position: relative;
+ z-index: 0;
+ overflow: hidden;
+ padding-top: 2rem;
+ padding-bottom: 0.5rem;
+
+}
+
+.card .btn {
+ font-weight: bold;
+ text-transform: uppercase;
+}
+.card-animate {
+ counter-reset: section;
+}
+.card-animate .card-body:before {
+ transition: 0.5s ease;
+ counter-increment: section;
+ content: "" counter(section) "";
+ display: block;
+ font-size: 15rem;
+ font-weight: 700;
+ position: absolute;
+ bottom: 5rem;
+ line-height: 0;
+ left: -0.85rem;
+ padding: 0;
+ color: rgba(0, 0, 0, .10);
+ z-index: 0;
+}
+.card-animate .card:hover .card-body:before {
+ transform: translate(10px, -10px);
+}
+.card-animate .card-text {
+ margin-top: 2rem;
+ margin-bottom: 2rem;
+}
+.card-animate .card-title {
+ font-weight: 900;
+ text-transform: uppercase;
+}
+
+
+/*.tableau table, td, th {
+  border: 1.3px solid black;
+  text-transform: capitalize;
+  padding: 3px;
+  min-width: 10px;
+  text-transform: none;
+  font-weight: bold;
+  color: #585858;
+  color: grey;
+
+
+
+}*/
+/* The Modal (background) */
+.modal1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal1-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: 80%;
+}
+
+/* The Close Button */
+.close1 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close1:hover,
+.close1:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

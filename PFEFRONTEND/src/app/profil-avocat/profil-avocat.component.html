@@ -1,0 +1,105 @@
+<div class="container" style="margin-top: 50px; margin-left: 150px;" >
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12 mt-3 pt-5" >
+            <div class="row z-depth-3">
+                <div class="begin col-sm-4 rounded-left" >
+
+                    <div  class="card-block text-center text-white" >
+                       <img src={{avocat[0].picture}} alt="" style="margin-top: 90px; width: 250px;" aria-hidden="true">
+                        <h2 class="font-weight-blod mt-4" style="text-transform:uppercase;">DR. {{avocat[0].lNameAV}} {{avocat[0].fNameAV}}</h2>
+                        <p>Avocat  {{avocat[0].specialityAV.speciality}}</p>
+
+                  </div>
+                </div>
+                <div class="col-sm-8 bg-light rounded-right">
+                    <h3 class="mt-3 text-center">Information</h3>
+                    <hr class="badge-primary mt-0 w-20">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">
+                                <i class="fas fa-user"></i>
+                                Nom Prénon</p>
+                            <h6 class="text-muted" style="text-transform:capitalize;">{{avocat[0].lNameAV}} {{avocat[0].fNameAV}}</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">
+                                <i class="fas fa-envelope-open-text"></i>
+                                Email</p>
+                            <h6 class="text-muted" >{{avocat[0].emailAV}}</h6>
+                        </div>
+                    </div>
+                    <h4 class="mt-3">Détailes</h4>
+                    <hr class="badge-primary">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">
+                                <i class="fas fa-phone"></i>
+                                Numéro Tlf:</p>
+                            <h6 class="text-muted">{{avocat[0].phoneAV}}</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">
+                                <i class="fas fa-map-marked-alt"></i>
+                                ville:</p>
+                            <h6 class="text-muted" style="text-transform:capitalize;">{{avocat[0].cityAV.city}}</h6>
+                        </div>
+
+                    </div>
+                    <hr class="badge-primary">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">
+                                <i class="fas fa-dollar-sign"></i>
+                                Prix Consultation:</p>
+                            <h6 class="text-muted">{{avocat[0].prix}} DT</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">
+                                <i class="fas fa-user-tag"></i>
+                                Spécialité:</p>
+                            <h6 class="text-muted"> {{avocat[0].specialityAV.speciality}}</h6>
+                        </div>
+                    </div>
+
+                    <hr class="badge-primary">
+                    <div class="row">
+                    <div class="col-sm-6">
+                        <p class="font-weight-bold">
+                            <i class="far fa-building"></i>
+                            Emplacement De Cabinet:</p>
+                        <h6 class="text-muted" style="text-transform:capitalize;">{{avocat[0].Cabinet}}</h6>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="font-weight-bold">
+                            <i class="fas fa-award"></i>
+                            Diplômes et formations:</p>
+                        <h6 class="text-muted col-sm-9" style="text-transform:capitalize;" > {{avocat[0].diplome}}<br>
+                          {{avocat[0].training}}<br>
+                           </h6>
+                    </div>
+                </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<footer>
+<div class="text-center p-3" style="background-color: #fff; margin-top: 40px;">
+     2024 LawConnect:
+    <a class="text-blue" style="color: cadetblue;">NesrineDziri</a>
+  </div>
+</footer>
+
+
+

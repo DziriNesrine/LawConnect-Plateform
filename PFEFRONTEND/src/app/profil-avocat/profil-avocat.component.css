@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Trade+Winds&display=swap');
+
+
+
+/*--body---*/
+.container{
+  
+
+}
+.begin{
+    background-color: #D2AE6D;
+    width: 300px;
+    height: 580px;
+}
+.btn1 {
+  width: 150px;
+  background-color: #D2AE6D;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn1:hover {
+  background-color: #D2AE6D;
+
+}
+
+
+
+
+

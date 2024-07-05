@@ -1,0 +1,309 @@
+<!--<div class="container">
+  <div class="row">
+    <div class="col-md-5" *ngIf="!login">
+      <div class="panel panel-primary">
+        <div #scrollMe class="panel-body">
+          <ul class="chat">
+            <li *ngFor="let c of chats">
+              <div class="left clearfix" *ngIf="c.doctorName !== null ; else rightchat ">
+                <span class="chat-img ">
+                  <img src="http://placehold.it/50/55C1E7/fff&text=ME" alt="User Avatar" class="img-circle" />
+                </span>
+                <div class="chat-body ">
+                  <div class="header">
+                    <p>{{ c.message }}</p>
+                    <p>{{ c.updated_at | date: 'medium' }}</p>
+                  </div>
+                </div>
+              </div>
+              <ng-template #rightchat>
+                <div class="right clearfix">
+                  <span class="chat-img pull-right">
+                    <img src="http://placehold.it/50/FA6F57/fff&text=U" alt="User Avatar" class="img-circle" />
+                  </span>
+                  <div class="chat-body clearfix">
+                    <div class="header right1">
+                      <strong class="pull-right primary-font">{{c.clientName.fNameCL}} {{c.clientName.lNameCL}}</strong>
+                      <br>
+                      <p>{{ c.message }}</p>
+                      <small class=" pull-right  light-font text-muted"><span
+                          class="glyphicon glyphicon-time light-font "></span>{{ c.updated_at | date: 'medium'
+                        }}</small>
+
+                    </div>
+
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+        </div>
+        <div class="panel-footer">
+          <form (ngSubmit)="sendMessage()" #msgForm="ngForm">
+            <div class="input-group">
+              <input type="hidden" [(ngModel)]="msgData.room" name="room" />
+              <input type="hidden" [(ngModel)]="msgData.clientName" name="clientName" />
+              <input id="btn-input" type="text" [(ngModel)]="msgData.message" name="message"
+                class="form-control input-sm" placeholder="Type your message here..." required="" />
+              <span class="input-group-btn">
+                <button class="btn btn-warning btn-sm" id="btn-chat" [disabled]="!msgForm.form.valid">
+                  Send</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    ****CLIENT*****
+
+    <div class="col-md-5" *ngIf="login">
+      <div class="panel panel-primary" *ngIf="joinned; else joinroom">
+        <div class="panel-heading">
+          <span class="glyphicon glyphicon-comment"></span> {{ msgData.room }}
+          <div class="btn-group pull-right" *ngIf="login">
+            <button type="button" class="btn btn-default btn-xs" (click)="logout()">
+              Logout
+            </button>
+          </div>
+        </div>
+        <div #scrollMe class="panel-body">
+          <ul class="chat">
+            <li *ngFor="let c of chats">
+              <div class="left clearfix" *ngIf="c.avocatName === null ; else rightchat ">
+
+                <span class="chat-img pull-left">
+                  <img src="http://placehold.it/50/55C1E7/fff&text=ME" alt="User Avatar" class="img-circle" />
+                </span>
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">{{c.clientName.fNameCL}} {{c.clientName.lNameCL}}</strong> <small
+                      class="pull-right text-muted">
+                      <span class="glyphicon glyphicon-time"></span>{{ c.updated_at | date: 'medium' }}</small>
+                  </div>
+                  <p>{{ c.message }}</p>
+                </div>
+              </div>
+              <ng-template #rightchat>
+                <div class="right clearfix">
+                  <span class="chat-img pull-right">
+                    <img src="http://placehold.it/50/FA6F57/fff&text=U" alt="User Avatar" class="img-circle" />
+                  </span>
+                  <div class="chat-body clearfix">
+                    <div class="header">
+                      <strong class="pull-right primary-font">AV. {{c.avocatName.fNameAV}}
+                        {{c.avocatName.lNameAV}}</strong> <br>
+                      <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>{{ c.updated_at | date:
+                        'medium' }}</small>
+
+                    </div>
+                    <p>{{ c.message }}</p>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+        </div>
+        <div class="panel-footer">
+          <form (ngSubmit)="sendMessage()" #msgForm="ngForm">
+            <div class="input-group">
+              <input type="hidden" [(ngModel)]="msgData.room" name="room" />
+              <input type="hidden" [(ngModel)]="msgData.clientName" name="clientName" />
+              <input id="btn-input" type="text" [(ngModel)]="msgData.message" name="message"
+                class="form-control input-sm" placeholder="Type your message here..." required="" />
+              <span class="input-group-btn">
+                <button class="btn btn-warning btn-sm" id="btn-chat" [disabled]="!msgForm.form.valid">
+                  Send</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <ng-template #joinroom>
+        <div class="panel panel-primary" *ngIf="login">
+          <div class="panel-body">
+            <h1>Select Chat Room</h1>
+            <form (ngSubmit)="joinRoom()" #joinForm="ngForm">
+
+              <div class="form-group">
+                <select class="form-control" [(ngModel)]="newUser.room" name="room" required="">
+                  <option disabled selected>--Speciality--</option>
+                  <option *ngFor="let x of speciality" value={{x._id}}>{{x.speciality}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" [disabled]="!joinForm.form.valid">Join</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<div id="center-text">
+
+</div> -->
+<!--mon travail-->
+<!--CLIENT-->
+
+ <div id="body" *ngIf="login">
+    <div  class="header__notification" >
+      <i  style="size: 8em;  margin-top: 5px; margin-right: 0px; color:rgb(90, 86, 86)" class="fa fa-bell-o faa-ring animated fa-1x"  ></i>
+      <b>{{nbN}}</b>
+  
+  </div>
+    <div (click)="notificationM()"  id="chat-circle" class="btn btn-raised">
+  
+      <div id="chat-overlay"></div>
+      <i class="material-icons"><img src="../../assets/image/chat (2).png" class="chatimg"></i>
+    </div>
+  
+    <div class="chat-box">
+      <div class="chat-box-header">
+        Chat
+        <span class="chat-box-toggle" (click)="logoutID()"><i class="material-icons"><i
+              class="fas fa-times"></i></i></span>
+      </div>
+      <div class="chat-box-body">
+        <div class="chat-box-body" *ngIf="!joinned">
+          <div #scrollMe class="chat-logs">
+            <div *ngFor="let c of speciality">
+              <div class="col-12 row " style=" margin-left: 10px;">
+                <div class="col-3 ">
+                  <img  src={{c.image}} style="width: 60px; height: 60px;" alt="" class="chat-msg.user" />
+                </div>
+                <div class="col-9 speciality" style=" margin-top: 15px;">
+                  <a style="cursor: pointer;" (click)=" joinRoomID(c._id)"><b>{{ c.speciality }}</b></a>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div #scrollMe class="chat-logs" *ngIf="joinned">
+          <div *ngFor="let c of chats">
+            <div class="col-12 row " *ngIf="c.avocatName===null">
+              <div class="col-3">
+                <img style="width: 80px; height: 80px;" src="../../assets/image/chatCL.png" alt="User Avatar"
+                  class="chat-msg.user" />
+              </div>
+              <div class="col-9 " style="margin-top: 15px; margin-right: -5px;">
+                <strong>{{ c.message }} </strong>
+                <p class="glyphicon glyphicon-time"> {{ c.updated_at | date: 'medium' }} </p>
+              </div>
+            </div>
+            <div class="col-12 row rightmsg" *ngIf="c.avocatName!==null">
+              <div class="col-1 mt-1 ">
+                <img src="../../assets/image/chatAV.png" style="width: 60px; height: 60px;" alt="User Avatar"
+                  class="chat-msg.user" />
+              </div>
+              <div class="col-11">
+                <strong style="text-transform: uppercase; color: rgb(4, 76, 85); margin-right: 43px;" class="pull-right primary-font">AV.
+                  {{c.avocatName.fNameAV}} {{c.avocatName.lNameAV}}</strong> <br>
+                <strong class="text">{{ c.message }}</strong>
+                <p class="glyphicon glyphicon-time date"> {{ c.updated_at | date: 'medium' }} </p>
+              </div>
+            </div>
+            <hr>
+          </div>
+  
+        </div>
+  
+        <div class="chat-input"  *ngIf="joinned">
+          <form>
+            <input type="text" [(ngModel)]="msgData.message" name="message" id="chat-input"
+              placeholder="Send a message..." />
+            <button type="submit" (click)="sendMessageID()" class="chat-submit"><i class="material-icons"><i
+                  class="fas fa-arrow-right"></i></i></button>
+          </form>
+        </div>
+  
+  
+      </div>
+    </div>
+  
+  </div>
+  <!--AVOCAT-->
+  <div id="body" *ngIf="!login">
+    <div  class="header__notification" >
+      <i  style="size: 8em;  margin-top: 5px; margin-right: 0px; color:rgb(90, 86, 86)" class="fa fa-bell-o faa-ring animated fa-1x"  ></i>
+      <b>{{nbN}}</b>
+  
+  </div>
+  
+    <div id="chat-circle" class="btn btn-raised" (click)="notificationM()">
+  
+      <div id="chat-overlay"></div>
+      <i class="material-icons"><img src="../../assets/image/chat (2).png" class="chatimg"></i>
+    </div>
+  
+    <div class="chat-box">
+      <div class="chat-box-header">
+        Chat
+        <span class="chat-box-toggle" (click)="logoutID()"><i class="material-icons"><i class="fas fa-times"></i></i></span>
+      </div>
+      <div class="chat-box-body">
+        <div class="chat-box-body" *ngIf="!joinned">
+          <div #scrollMe  class="chat-logs">
+            <div *ngFor="let c of allClient">
+              <div class="col-12 row " style=" margin-left: 10px;">
+                <div class="col-3 ">
+                  <img src="../../assets/image/cp.png" style="width: 90px; height: 90px;" alt="" class="chat-msg.user" />
+                </div>
+                <div class="col-9 speciality" style=" margin-top: 28px; ">
+                  <a style="cursor: pointer; text-transform: capitalize; margin-left: 20px;" (click)=" joinRoomD(c._id)"><b>{{ c.fNameCL }} {{ c.lNameCL }}</b></a>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+  
+        <div #scrollMe class="chat-logs" *ngIf="joinned">
+          <div *ngFor="let c of chats">
+            <div class="col-12 row " *ngIf="c.avocatName !== null">
+              <div class="col-3" >
+                <img style="width: 60px; height: 60px;margin-left: 20px;" src="../../assets/image/chatAV.png" alt="User Avatar"
+                  class="chat-msg.user" />
+              </div>
+              <div class="col-9 " style="margin-top: 8px;">
+                <strong style="margin-left: 15px;" >{{ c.message }} </strong>
+                <p style="margin-left: 15px;" class="glyphicon glyphicon-time"> {{ c.updated_at | date: 'medium' }} </p>
+              </div>
+            </div>
+            <div class="col-12 row rightmsg" *ngIf="c.avocatName===null">
+              <div class="col-1 ">
+                <img src="../../assets/image/chatCL.png" style="width: 85px; height: 85px;" alt="User Avatar"
+                  class="chat-msg.user" />
+              </div>
+              <div class="col-11 mt-1">
+                <strong style="text-transform: capitalize; color: rgb(4, 76, 85); margin-right: -50px;"
+                  class="pull-right primary-font">{{c.clientName.fNameCL}} {{c.clientName.lNameCL}}</strong> <br>
+                <strong class="text">{{ c.message }}</strong>
+                <p class="glyphicon glyphicon-time date"> {{ c.updated_at | date: 'medium' }} </p>
+              </div>
+            </div>
+            <hr>
+          </div>
+  
+        </div>
+  
+        <div class="chat-input" *ngIf="!joinned">
+          <form>
+            <input type="text" [(ngModel)]="msgData.message" name="message" id="chat-input"
+              placeholder="Send a message..." />
+            <button type="submit" (click)="sendMessageAV()" class="chat-submit"><i class="material-icons"><i
+                  class="fas fa-arrow-right"></i></i></button>
+          </form>
+        </div>
+  
+  
+      </div>
+  
+      <div >
+    </div>
+  
+    </div>
+  

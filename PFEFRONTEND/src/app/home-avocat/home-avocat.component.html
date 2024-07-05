@@ -1,0 +1,125 @@
+
+
+<div class="mycontainer" style="margin-top: 80px;">
+  <div class="container">
+    <p  class="card1">
+      <i style="margin-left: 20px;" class="fa fa-calendar-check-o"></i>
+      Tous les Rendez-Vous et tous les demandes
+    </p>
+    <br> <br> <br>
+    <h1 class="title"><i class="fas fa-table"></i> Table de Rendez-Vous</h1>
+    <div class="row">
+      <div class="col-5">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col" class="col1"><i class="fas fa-list-ol"></i> Numéro</th>
+              <th scope="col" class="col2"><i class="fas fa-signature"></i> Nom Et Prénom</th>
+              <th scope="col" class="col3"><i class="fas fa-at"></i> Email</th>
+              <th scope="col" class="col4"><i class="fas fa-phone"></i> Numéro de Tél</th>
+              <th scope="col" class="col5"><i class="fas fa-calendar-check"></i> Rendez-Vous</th>
+              <th scope="col" class="col6"><i class="fas fa-money-check-alt"></i> Paiement</th>
+              <th scope="col" class="col8"><i class="fas fa-chart-line"></i> Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of rendez_vousValide  let index=index">
+              <th scope="row">{{index}}</th>
+              <td style=" text-transform: capitalize;">{{x.clientID.fNameCL}}  {{x.clientID.lNameCL}}</td>
+              <td>{{x.clientID.emailCL}}</td>
+              <td>+216 {{x.clientID.phoneCL}}</td>
+              <td>{{x.date.substr(0, 10)}} &nbsp;{{x.date.substr(11,5)}}</td>
+              <td   style="text-align: center; color: rgb(117, 115, 115); cursor: pointer;">
+                    <!-- Trigger/Open The Modal -->
+                    <a id="myBtn"><i class="fas fa-eye fa-2x"></i></a>
+                   <!-- The Modal -->
+                  <div id="myModal" class="modal1">
+                    <!-- Modal content -->
+                    <div class="modal1-content" style=" background-size: cover;">
+                      <span class="close1">&times;</span>
+                      <h1 style="margin-left: 30px; font-weight: 100;font-size: 32px; text-transform: capitalize; color: #0E6689; font-family: cursive;"> Vérification Du Paiement <i class="fas fa-check-circle"></i></h1> <hr>
+                      <img id="myImg" style="width:100%;max-width:600px; height: 250px; margin-right: 10px; margin-top: 20px;"  src={{x.paye}}>
+                    </div>
+                  </div>
+              </td>
+            
+          <td>
+            <button type="button" (click)="videochat(x.clientID._id)" class="btn " style="margin-left: 10px;   background-color:#D2AE6D  ; color: #fff;"><i
+                class="fas fa-video"></i></button>
+            <!--<button type="button" class="btn btn-success" style="margin-left: 10px;"><i class="fas fa-edit"></i></button>-->
+          </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!------Acepter le demande de rendez-vous---->
+  <div class="container">
+    <h1 class="title"><i class="fas fa-calendar-check"></i> Table de Demande</h1>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col" class="col1"><i class="fas fa-list-ol"></i> Numéro</th>
+              <th scope="col" class="col2"><i class="fas fa-signature"></i> Nom&nbsp;Et&nbsp;Prénom</th>
+              <th scope="col" class="col3"><i class="fas fa-at"></i> Email</th>
+              <th scope="col" class="col4"><i class="fas fa-phone"></i> Numéro&nbsp;de&nbsp;Tél</th>
+              <th scope="col" class="col5"><i class="fas fa-calendar-check"></i> Rendez-Vous</th>
+              <th scope="col" class="col6"><i class="fas fa-venus-mars"></i> Genre</th>
+              <th scope="col" class="col7"><i class="fas fa-chart-line"></i> Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of rendez_vous  let index=index">
+              <th scope="row">{{index}}</th>
+              <td style=" text-transform: capitalize;">{{x.clientID.fNameCL}}  {{x.clientID.lNameCL}}</td>
+              <td>{{x.clientID.emailCL}}</td>
+              <td>+216 {{x.clientID.phoneCL}}</td>
+              <td>{{x.date.substr(0, 10)}} {{x.date.substr(11,5)}}</td>
+              <td style=" text-transform: capitalize;" >{{x.clientID.sexeCL}}</td>
+
+              <td style="text-align: center;">
+                <!--<button (click)="updateRV(x._id)" type="button" class="btn btn-success" style="margin-left: 10px; width: 100px;"><i
+                    class="fas fa-check-circle" ></i> Valider</button>-->
+                    <i  (click)="updateRV(x._id)" style=" color:rgb(3, 114, 3); cursor: pointer; "class="fas fa-check-circle fa-2x ml-3" ></i>
+                    <i  (click)="deleteRV(x._id)"  style="  margin-left: 5px; color: rgba(228, 5, 5, 0.877); cursor: pointer;" class="fas fa-times-circle fa-2x"></i>
+
+                <!--<button type="button" class="btn btn-success" style="margin-left: 10px;"><i class="fas fa-edit"></i></button>-->
+
+              </td>
+            </tr>
+
+
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!----footer --->
+<footer>
+  <div class="text-center p-3" style="background-color: #fff; margin-top: 40px;">
+    LawConnect 2024:
+    <a class="text-blue" style="color: cadetblue;">NesrineDziri</a>
+  </div>
+</footer>

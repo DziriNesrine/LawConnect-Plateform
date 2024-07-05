@@ -1,0 +1,94 @@
+.container{
+  
+      margin-top: -550px;
+  
+  }
+  
+  
+  
+  /*----edit model---*/
+  .forme{
+      width: 800px;
+  }
+  .form-title {
+      margin-bottom: 40px;
+      font-family: cursive;
+      color:#D2AE6D;
+      text-transform: none;
+  }
+  
+  .confirm-form {
+      cursor: pointer;
+      padding: 10px 20px;
+      background-color: #D2AE6D;
+      border: 2px solid #D2AE6D;
+      color: #ffffff;
+      font-size: 18px;
+      text-transform: uppercase;
+      transition: .3s;
+      margin-left: 100px;
+      border-radius: 30px;
+      width: 200px;
+      margin-bottom: -80px;
+  }
+  .form-control:focus {
+    border-color: #11af9a;
+      box-shadow: 0 0 0 0.2rem rgba(131, 181, 102, 0.25);
+  }
+  .btn2:hover {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.35);
+  }
+  .name{
+    font-family: cursive;
+  }
+  .mr-2{
+    font-family: cursive;
+  }
+  .changer{
+    font-family: cursive;
+  }
+  .form-control{
+    font-family: cursive;
+  }
+  .form-select{
+    border-color: #11af9a;
+    box-shadow: 0 0 0 0.2rem rgba(131, 181, 102, 0.25);
+  }
+  
+  .calandrier-form{
+      cursor: pointer;
+      padding: 10px 20px;
+      background-color: #D2AE6D;
+      border: 2px solid #D2AE6D;
+      color: #ffffff;
+      font-size: 18px;
+      text-transform: uppercase;
+      transition: .3s;
+      margin-left: 100px;
+      border-radius: 30px;
+      width: 200px;
+      margin-bottom: -80px;
+  
+  }
+  .btn3{
+    color: #ffffff ;
+    border-radius: 20px;
+    margin-left: 280px;
+    margin-top: 20px;
+    padding: 3px 3px;
+    background-color: #D2AE6D;
+    border: 2px solid #D2AE6D;
+    font-size: 18px;
+    text-transform: capitalize;
+    width: 120px;
+  
+  
+  }
+  .changer {
+    color:#D2AE6D ;
+  
+  }
+  
+  
+  
+  

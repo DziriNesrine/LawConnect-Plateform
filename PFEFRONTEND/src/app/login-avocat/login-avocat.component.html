@@ -1,0 +1,221 @@
+<body class="home-content" style="margin-top: 80px;" >
+  <div class="mycontainer">
+        <div class="forms-container">
+          <div class="signin-signup">
+            <!--la forme de connexion-->
+            <form [formGroup]="loginForm"  class="sign-in-form my-5">
+              <h2 class="title" style="margin-top: -60px;">Connexion</h2>
+              <div class="input-field">
+                <i class="fas fa-address-card"></i>
+                <input type="number" placeholder="CIN" formControlName="cinAV" matInput  />
+              </div>
+              <div *ngIf="errorMessageR && loginForm.controls['cinAV'].invalid || loginForm.controls['cinAV'].invalid && loginForm.controls['cinAV'].touched" >
+                <div  *ngIf="loginForm.controls['cinAV'].errors?.['required']">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre CIN</p>
+                </div>
+               </div>
+              <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Email" formControlName="emailAV" matInput />
+              </div>
+              <div *ngIf="errorMessageR && loginForm.controls['emailAV'].invalid || loginForm.controls['emailAV'].invalid && loginForm.controls['emailAV'].touched" >
+                <div  *ngIf="loginForm.controls['emailAV'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre email</p>
+                </div>
+               </div>
+              <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" formControlName="passwordAV"  matInput required/>
+              </div>
+              <div   *ngIf="errorMessageR && loginForm.controls['passwordAV'].invalid || loginForm.controls['passwordAV'].invalid && loginForm.controls['passwordAV'].touched" >
+                <div  *ngIf="loginForm.controls['passwordAV'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre mot de passe</p>
+                </div>
+               </div>
+               <div class="container">
+                <details>
+                  <summary>
+                    <button class="button " type="submit" (click)="login()" class="btn solid" >Connexion </button>
+                  <div class="details-modal-overlay" *ngIf="popup"></div>
+                  </summary>
+                  <!--la forme de pop up piece justificatives-->
+                  
+                </details>
+                <div class="details-modal" *ngIf="popup" >
+                  <div class="details-modal-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z" fill="black" />
+                    </svg>
+                  </div>
+                  <div class="details-modal-title">
+                    <h1 style="font-family: cursive;"><i class="fas fa-folder-plus"></i>  Ajouter Les Piéces Justificatives</h1>
+                  </div>
+                  <div class="details-modal-content">
+                      <form >
+                        <h1 style="font-size: medium; color: #D2AE6D; font-family: cursive; margin-left: -53px;"><i class="far fa-address-card mb-3 mr-5"></i> Ajouter ici la copie de la carte d'identité </h1>
+                          <input (change)="selectImage($event)" type="file" id="myFile" name="filename" style="font-family: cursive; font-size: medium;"> <br> <hr>
+                          <h2 style="font-size: medium; color: #D2AE6D; font-family: cursive; margin-left: -170px;"><i class="far fa-file-alt mb-3 mr-5"></i> Ajouter ici votre diplôme</h2>
+                          <input  (change)="selectImage2($event)" type="file" id="myFile" name="filename" style="font-family: cursive; font-size: medium;">
+                        </form>
+                        <button  (click)="onSubmit()" type="button" class="btn btn-secondary" style="border-radius: 20px; margin-bottom: 10px; width: 120px; height: 40px;margin-left: 400px; font-family: cursive;">Envoyer</button>
+                  </div>
+                </div>
+              </div>
+              <div class="alert alert-danger" *ngIf="errorMessage">
+                <i class="fas fa-exclamation-circle"></i> {{serverErrorMessages}}
+              </div>
+            </form>
+            <form [formGroup]="resisterForm"  class="sign-up-form" >
+              <h2 class="title">S'inscrire</h2>
+              <div class="row col-12" style="margin-right: 20px;">
+              <div class="myinput-field  col-2" >
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Prénom" formControlName="fNameAV" matInput />
+              </div>
+              <div class="myinput-field col-2 mx-3">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Nom" formControlName="lNameAV" matInput />
+              </div>
+              </div>
+              <div *ngIf="errorMessageR && resisterForm.controls['fNameAV'].invalid || resisterForm.controls['fNameAV'].invalid && resisterForm.controls['fNameAV'].touched" >
+                <div  *ngIf="resisterForm.controls['fNameD'].errors?.['required']">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre Prénom</p>
+                </div>
+               </div>
+               <div *ngIf="errorMessageR && resisterForm.controls['lNameAV'].invalid || resisterForm.controls['lNameAV'].invalid && resisterForm.controls['lNameAV'].touched" >
+                <div  *ngIf="resisterForm.controls['lNameAV'].errors?.['required']">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre Nom</p>
+                </div>
+               </div>
+              <div class="input-field">
+                <i class="fas fa-address-card"></i>
+                <input type="number" placeholder="CIN" formControlName="cinAV" matInput  />
+              </div>
+              <div *ngIf="errorMessageR && resisterForm.controls['cinAV'].invalid || resisterForm.controls['cinAV'].invalid && resisterForm.controls['cinAV'].touched" >
+                <div  *ngIf="resisterForm.controls['cinAV'].errors?.['required']">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre numéro CIN</p>
+                </div>
+               </div>
+              <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Email" required   formControlName="emailAV" matInput/>
+              </div>
+              <div *ngIf="errorMessageR && resisterForm.controls['emailAV'].invalid || resisterForm.controls['emailAV'].invalid && resisterForm.controls['emailAV'].touched" >
+                <div  *ngIf="resisterForm.controls['emailAV'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre email</p>
+                </div>
+               </div>
+
+              <div class="input-field ">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Mot de passe" formControlName="passwordAV"  matInput />
+              </div>
+              <div   *ngIf="errorMessageR && resisterForm.controls['passwordAV'].invalid || resisterForm.controls['passwordAV'].invalid && resisterForm.controls['passwordAV'].touched" >
+                <div  *ngIf="resisterForm.controls['passwordAV'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre mot de passe</p>
+                </div>
+               </div>
+              <div class="input-field ">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Confirmer mot de passe" formControlName="confirmPasswordAV"  matInput />
+              </div>
+              <div *ngIf="errorMessageR && resisterForm.controls['confirmPasswordAV'].invalid || resisterForm.controls['confirmPasswordAV'].invalid && resisterForm.controls['confirmPasswordAV'].touched">
+                <div *ngIf="resisterForm.controls['confirmPasswordAV'].errors?.['required']">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre confirmation de mot de passe</p>
+                </div>
+              </div>
+              
+              
+              <div *ngIf="resisterForm.controls['passwordAV'].value !== resisterForm.controls['confirmPasswordAV'].value && resisterForm.controls['confirmPasswordAV'].touched">
+                <div>
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Confirmez votre mot de passe</p>
+                </div>
+              </div>
+              
+              <div class="input-field">
+                <i class="fas fa-phone"></i>
+                <input type="number" placeholder="Téléphone" formControlName="phoneAV"  matInput />
+              </div>
+              <div   *ngIf="errorMessageR && resisterForm.controls['phoneAV'].invalid || resisterForm.controls['phoneAV'].invalid && resisterForm.controls['phoneAV'].touched" >
+                <div  *ngIf="resisterForm.controls['phoneAV'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre téléphone</p>
+                </div>
+               </div>
+              <div class="input-field">
+                <i class="fas fa-venus-mars"></i>
+                <select required formControlName="sexeAV"  mat-select [(ngModel)]=sexeav >
+                  <option value="" disabled selected >--Genre--</option>
+                  <option value="femme">Femme</option>
+                  <option value="homme">Homme</option>
+                </select>
+              </div>
+              <div *ngIf="errorMessageR && resisterForm.controls['sexeAV'].invalid || resisterForm.controls['sexeAV'].invalid && resisterForm.controls['sexeAV'].touched" >
+                <div  *ngIf="resisterForm.controls['sexeAV'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre genre</p>
+                </div>
+               </div>
+               <div class="input-field">
+                <i class="fas fa-city"></i>
+                <select formControlName="cityAV" required mat-select  [(ngModel)]=cityav>
+                  <option value="" disabled selected >--Région--</option>
+                  <option *ngFor="let x of city" value={{x._id}}>{{x.city}}</option>
+                </select>
+              </div>
+              <div *ngIf="errorMessageR && resisterForm.controls['cityAV'].invalid || resisterForm.controls['cityAV'].invalid && resisterForm.controls['cityAV'].touched" >
+                <div  *ngIf="resisterForm.controls['cityAV'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre région</p>
+                </div>
+               </div>
+              <div class="input-field">
+                <i class="fas fa-notes-medical"></i>
+                <select formControlName="specialityAV" required mat-select  [(ngModel)]=specialityav>
+                  <option value="" disabled selected >--Specialité--</option>
+                  <option *ngFor="let y of speciality" value={{y._id}}>{{y.speciality}}</option>
+                </select>
+              </div>
+              <div *ngIf="errorMessageR && resisterForm.controls['specialityAV'].invalid || resisterForm.controls['specialityAV'].invalid && resisterForm.controls['specialityAV'].touched" >
+                <div  *ngIf="resisterForm.controls['specialityAV'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre spécialité</p>
+                </div>
+               </div>
+              <button type="submit" class="btn" (click)="signUp()" >S'inscrire</button>
+              <div class="alert alert-danger" *ngIf="errorMessage">
+                <i class="fas fa-exclamation-circle"></i> {{serverErrorMessages}}
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <div class="panels-container">
+          <div class="panel left-panel">
+            <div class="content">
+              <h3>Pas encore de compte?</h3>
+              <p>
+                LawConnect vous permet de créer un compte rapide et facile !
+              </p>
+              <button class="btn transparent" id="sign-up-btn">
+                S'inscrire
+              </button>
+            </div>
+            <img  src="../../assets/image/loginavocat.png" class="image" alt="" style="margin-top: -80px;"/>
+          </div>
+          <div class="panel right-panel">
+            <div class="content">
+              <h3>Avez-vous déja un compte?</h3>
+              <p>
+                LawConnect vous permet d'accéder avec un identifiant et un mot de passe unique à nos différents services dans un environement sécurisé et dans le respect de votre vie privée
+              </p>
+              <button   class="btn transparent" id="sign-in-btn">
+                Connexion
+              </button>
+            </div>
+            <img style="margin-right: -40px; margin-top: -50px; width: 400px;" src="../../assets/image/loginavocat2.png" class="image" alt="" />
+          </div>
+        </div>
+      </div>
+  </body>
+
+
+
+

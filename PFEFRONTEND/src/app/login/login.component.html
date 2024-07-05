@@ -1,0 +1,192 @@
+<body class="home-content" style="margin-top: 50px;" >
+  <div class="mycontainer">
+        <div class="forms-container">
+          <div class="signin-signup">
+            <form [formGroup]="loginForm" class="sign-in-form my-5 ">
+              <h2 class="title" style="margin-top: -60px;">Connexion</h2>
+  
+              <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Email" formControlName="emailCL" matInput />
+              </div>
+              <div *ngIf="errorMessageR && loginForm.controls['emailCL'].invalid || loginForm.controls['emailCL'].invalid && loginForm.controls['emailCL'].touched" >
+                <div  *ngIf="loginForm.controls['emailCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre email</p>
+                </div>
+               </div>
+  
+              <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Mot de passe" formControlName="passwordCL"  matInput required/>
+              </div>
+              <div   *ngIf="errorMessageR && loginForm.controls['passwordCL'].invalid || loginForm.controls['passwordCL'].invalid && loginForm.controls['passwordCL'].touched" >
+                <div  *ngIf="loginForm.controls['passwordCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre mot de passe</p>
+                </div>
+               </div>
+              <button type="submit" type="submit" (click)="login()" class="btn solid">Connexion</button>
+              <div class="alert alert-danger" *ngIf="errorMessage">
+                <i class="fas fa-exclamation-circle"></i> {{serverErrorMessages}}
+              </div>
+              <p class="social-text">Ou Connectez-vous avec les plateformes sociales</p>
+              <div class="social-media">
+                <a href="#" class="social-icon">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-google"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </form>
+            <!--Sign Up-->
+            <form [formGroup]="registerForm" class="sign-up-form">
+              <h2 class="title">S'inscrire</h2>
+              <div class="row col-12">
+              <div class="myinput-field  col-2" >
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Prénom"  formControlName="fNameCL"  matInput  required/>
+              </div>
+  
+              <div class="myinput-field col-2 mx-3">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Nom" formControlName="lNameCL"  matInput  required  />
+              </div>
+              </div>
+              <div *ngIf="errorMessageR && registerForm.controls['fNameCL'].invalid || registerForm.controls['fNameCL'].invalid && registerForm.controls['fNameCL'].touched" >
+                <div  *ngIf="registerForm.controls['fNameCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre prénom</p>
+                </div>
+               </div>
+               <div *ngIf="errorMessageR && registerForm.controls['lNameCL'].invalid || registerForm.controls['lNameCL'].invalid && registerForm.controls['lNameCL'].touched" >
+                <div  *ngIf="registerForm.controls['lNameCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre nom</p>
+                </div>
+               </div>
+              <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Email" required formControlName="emailCL"  matInput  />
+              </div>
+              <div *ngIf="errorMessageR && registerForm.controls['emailCL'].invalid || registerForm.controls['emailCL'].invalid && registerForm.controls['emailCL'].touched" >
+                <div  *ngIf="registerForm.controls['emailCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre email</p>
+                </div>
+               </div>
+              <div class="input-field ">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Mot de passe" formControlName="passwordCL"  matInput required />
+              </div>
+              <div *ngIf="errorMessageR && registerForm.controls['passwordCL'].invalid || registerForm.controls['passwordCL'].invalid && registerForm.controls['passwordCL'].touched" >
+                <div  *ngIf="registerForm.controls['passwordCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre mot de passe</p>
+                </div>
+               </div>
+              <div class="input-field ">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Confirmez le mot de passe" formControlName="confirmPasswordCL" matInput required />
+              </div>
+              <div *ngIf="errorMessageR && registerForm.controls['confirmPasswordCL'].invalid || registerForm.controls['confirmPasswordCL'].invalid && registerForm.controls['confirmPasswordCL'].touched" >
+                <div  *ngIf="registerForm.controls['confirmPasswordCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre mot de passe</p>
+                </div>
+               </div>
+              <div *ngIf="registerForm.controls['passwordCL'].value !== registerForm.controls['confirmPasswordCL'].value && registerForm.controls['confirmPasswordCL'].touched">
+                <div>
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Confirmez votre mot de passe</p>
+                </div>
+               </div>
+  
+              <div class="input-field">
+                <i class="fas fa-venus-mars"></i>
+                <select required formControlName="sexeCL"  mat-select [(ngModel)]=sexecl >
+                  <option  value="" disabled selected>--Genre--</option>
+                  <option value="femme">Femme</option>
+                  <option value="homme">Homme</option>
+                </select>
+              </div>
+              <div *ngIf="errorMessageR && registerForm.controls['sexeCL'].invalid || registerForm.controls['sexeCL'].invalid && registerForm.controls['sexeCL'].touched" >
+                <div  *ngIf="registerForm.controls['sexeCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre genre</p>
+                </div>
+               </div>
+              <div class="input-field">
+                <i class="fas fa-phone"></i>
+                <input type="number" formControlName="phoneCL"  matInput placeholder="Téléphone" />
+              </div>
+              <div *ngIf="errorMessageR && registerForm.controls['phoneCL'].invalid || registerForm.controls['phoneCL'].invalid && registerForm.controls['phoneCL'].touched" >
+                <div  *ngIf="registerForm.controls['phoneCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre téléphone</p>
+                </div>
+               </div>
+              <div class="input-field">
+                <i class="fas fa-city"></i>
+                <select required formControlName="cityCL"  mat-select [(ngModel)]=citycl >
+                  <option value="" disabled selected hidden>--Région--</option>
+                  <option *ngFor="let x of city" value={{x._id}}>{{x.city}}</option>
+                </select>
+              </div>
+              <div *ngIf="errorMessageR && registerForm.controls['cityCL'].invalid || registerForm.controls['cityCL'].invalid && registerForm.controls['cityCL'].touched" >
+                <div  *ngIf="registerForm.controls['cityCL'].errors?.['required'] ">
+                  <p style="color: red;"><i class="fas fa-exclamation-circle"></i> Entrez votre région</p>
+                </div>
+               </div>
+              <button type="submit" class="btn" (click)="signUp()" >S'inscrire</button>
+              <div class="alert alert-danger" *ngIf="errorMessage">
+                <i class="fas fa-exclamation-circle"></i> {{serverErrorMessages}}
+              </div>
+              <p class="social-text">Ou Connectez-vous avec les plateformes sociales</p>
+              <div class="social-media">
+                <a href="#" class="social-icon">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-google"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+  
+        <div class="panels-container">
+          <div class="panel left-panel">
+            <div class="content">
+              <h3>Pas encore de compte?</h3>
+              <p>
+                LawConnect vous permet de créer un compte rapide et facile !
+              </p>
+              <button class="btn transparent" id="sign-up-btn">
+                S'inscrire
+              </button>
+            </div>
+            <img  src="../../assets/image/logincleint2.png" class="image" alt="" />
+          </div>
+          <div class="panel right-panel">
+            <div class="content">
+              <h3>Avez-vous déja un compte?</h3>
+              <p>
+                LawConnect vous permet d'accéder avec un identifiant et un mot de passe unique à nos différents services dans un environement sécurisé et dans le respect de votre vie privée
+              </p>
+              <button   class="btn transparent" id="sign-in-btn">
+                Connexion
+              </button>
+            </div>
+            <img src="../../assets/image/logincliant.png" class="image" alt="" />
+          </div>
+        </div>
+      </div>
+  </body>
+  
+  
+  
+  

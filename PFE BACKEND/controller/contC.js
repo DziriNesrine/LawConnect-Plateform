@@ -1,3 +1,4 @@
+const { parseISO, format } = require('date-fns');
 const Calendar = require('../models/calendar')
 const today = new Date();
 addCl = function(req, res, next) {
@@ -12,9 +13,11 @@ addCl = function(req, res, next) {
         Calendar.find({avocatID : req.body.avocatID , date : req.body.date}).
         then(date=>{
             if(date.length < 1){
+              const dateTime = parseISO(req.body.date);
+const formattedDateTime = format(dateTime, "yyyy-MM-dd'T'HH:mm");
                     const calendar = new Calendar({
                       avocatID : req.body.avocatID,
-                    date :new Date(req.body.date),})
+                    date :formattedDateTime,})
                     calendar.save().
                     then(resalt=>{
                             console.log(calendar)
@@ -23,7 +26,6 @@ addCl = function(req, res, next) {
                     .catch(err=>{
                             res.status(404).json({
                             massage : err})})}
-                            
             else{
                 res.status(404).send(['date deja choisie']);
 

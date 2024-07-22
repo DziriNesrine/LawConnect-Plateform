@@ -15,6 +15,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
 // Connexion à la base de données
 mongoose.connect('mongodb://0.0.0.0:27017/ma_base_de_donnees_pfe', {
 }).then(() => {

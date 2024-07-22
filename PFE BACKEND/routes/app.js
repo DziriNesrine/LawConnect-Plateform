@@ -1,32 +1,50 @@
 const express = require('express');
-const cors = require('cors');
 const http = require('http');
-const socketIo = require('socket.io');
+const { Server } = require('socket.io');
 const nodeCron = require('node-cron');
+const cors = require('cors'); 
 
-// Initialisation de l'application Express
 const app = express();
+app.use(cors({ origin: 'http://localhost:4200' }));
+
 const server = http.createServer(app);
-const io = socketIo(server);
-app.use(cors());
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:4200',
 
-// Modèle de calendrier pour MongoDB (remplacez par votre propre modèle)
-const Calendar = require('../models/calendar');
+  }
+});
 
-// Gestion des connexions Socket.io
+
+
+server.listen(4600, () => {
+  console.log('Serveur Socket.io en écoute sur le port 4600');
+});
+
+
 io.on('connection', (socket) => {
-  console.log('New client connected');
+  
+  console.log('Nouveau client connecté');
+
+  socket.on('frontendEvent', (data) => {
+    console.log('Événement reçu du frontend:', data);
+
+  });
+
   socket.on('disconnect', () => {
-    console.log('Client disconnected');
+    console.log('Client déconnecté');
   });
 });
 
-// Tâche planifiée avec node-cron
+
 nodeCron.schedule('* * * * *', async () => {
   const now = new Date();
-  now.setSeconds(0, 0); // Arrondir à la minute précise
+  now.setSeconds(0, 0); 
 
   try {
+   
+    const Calendar = require('../models/calendar'); 
+
     const appointments = await Calendar.find({
       date: now,
       notificationSent: false,
@@ -34,12 +52,16 @@ nodeCron.schedule('* * * * *', async () => {
     });
 
     console.log("Rendez-vous trouvés:", appointments, now);
+     io.emit('BackendEvent', {
+      message: 'hello from backend .'
+    });
 
     appointments.forEach(async (appointment) => {
       io.emit('appointmentNotification', {
         clientId: appointment.clientId,
         message: 'Votre rendez-vous est arrivé.'
       });
+
       appointment.notificationSent = true;
       await appointment.save();
     });
@@ -48,13 +70,6 @@ nodeCron.schedule('* * * * *', async () => {
   }
 });
 
-// Route par défaut pour tester la connexion
-app.get('/', (req, res) => {
-  res.send('Socket.io server is running.');
-});
 
-server.listen(4600, () => {
-  console.log('Serveur Socket.io en écoute sur le port 4600');
-});
-// Exporter l'application Express
+
 module.exports = app;

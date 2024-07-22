@@ -2,7 +2,10 @@ var Chat = require('../models/chat.js');
 
 /*get room chats "speciality and client "*/
 getchat = (req,res,next)=>{
-    Chat.find({room: req.params.room , clientName: req.params.clientName}).populate('clientName','fNameCL , lNameCL' ).populate('room', 'speciality').populate('avocatName','fNameAV , lNameAV')
+    Chat.find({room: req.params.room , clientName: req.params.clientName})
+    .populate('clientName','fNameCL , lNameCL' )
+    .populate('room', 'speciality')
+    .populate('avocatName','fNameAV , lNameAV')
     .then(resultat=>{
         res.status(200).json(
             resultat
@@ -14,7 +17,10 @@ getchat = (req,res,next)=>{
     })})}
 /* get room chats "speciality  */
 getchatIDR = (req,res,next)=>{
-    Chat.find({room: req.params.room }).populate('room', 'speciality').populate('clientName','fNameCL , lNameCL').populate('avocatName','fNameAV , lNameAV')
+    Chat.find({room: req.params.room })
+    .populate('room', 'speciality')
+    .populate('clientName','fNameCL , lNameCL')
+    .populate('avocatName','fNameAV , lNameAV')
     .then(resultat=>{
         res.status(200).json(
             resultat
@@ -27,7 +33,9 @@ getchatIDR = (req,res,next)=>{
 
 /* get id client */
 getchatID = (req,res,next)=>{
-    Chat.find({ clientName: req.params.clientName}).populate('clientName','fNameCL , lNameCL').populate('avocatName','fNameAV , lNameAV')
+    Chat.find({ clientName: req.params.clientName})
+    .populate('clientName','fNameCL , lNameCL')
+    .populate('avocatName','fNameAV , lNameAV')
     .then(resultat=>{
         res.status(200).json(
             resultat

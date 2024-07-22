@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit{
   public auth:Boolean | undefined
   public RendezVousClient : any=[]
   public  RendezVousValide : any=[]
+  public notifpayement : any=[]
   images: any ;
 
 
@@ -51,13 +52,9 @@ export class NavbarComponent implements OnInit{
       alert(data.message); // Afficher une alerte ou mettre à jour l'UI
     });*/
 
-    this.notificationService.onEvent('BackendEvent', (data) => {
-      console.log('Événement BackendEvent reçu dans le composant:', data);
-    });
-    this.notificationService.onEvent('appointmentNotification', (data) => {
-      console.log('Événement BackendEvent reçu dans le composant:', data);
-    });
-
+ 
+this.getNotif()
+this.notifpayement=localStorage.getItem('notif')
     this.getCLID()
     this.getAVID()
     /*this.testSocket()*/
@@ -71,7 +68,15 @@ export class NavbarComponent implements OnInit{
 } */
 
 
-
+getNotif(){
+  this.notificationService.onEvent('appointmentNotification', (data) => {
+    console.log('Événement BackendEvent reçu dans le composant:', data);
+    this.notifpayement.push(data)
+    console.log("messagede rendez(=-vous", this.notifpayement)
+    localStorage.setItem('notif', data);
+  });
+  
+}
 
 
   getCLID(){
@@ -80,7 +85,6 @@ export class NavbarComponent implements OnInit{
     if(this.clientid!=null){
       this.getClient()
       this.auth=false
-      this.getRendezClient()
       this.getRendezValide()
     }
 
@@ -95,7 +99,6 @@ export class NavbarComponent implements OnInit{
     getRendezClient(){
       this._myservice.getRendez_vousClient(this.clientid).subscribe((res) =>{
         this.RendezVousClient=res;
-
         console.log(res);
        })
       }

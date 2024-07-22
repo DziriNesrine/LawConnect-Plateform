@@ -10,17 +10,23 @@ export class NotificationServiceService {
 
   public socket: Socket
   constructor() {
-    // Connectez-vous à votre serveur Socket.io
-    this.socket = io('http://localhost:4600');
 
-    this.socket = io(environment.SOCKET_ENDPOINT);
 
-    // Écoutez les événements du serveur
-    this.socket.on('appointmentNotification', (data: any) => {
-      console.log('Notification de rendez-vous:', data);
-    });
+    this.socket = io('http://localhost:4600'); 
+  this.socket.on('BackendEvent', (data) => {
+    console.log('Événement BackendEvent reçu:', data);
+  });
+  this.socket.on('appointmentNotification', (data) => {
+    console.log('Événement BackendEvent reçu:', data);
+  });
   }
-
+  emitEvent(event: string, data: any): void {
+    this.socket.emit(event, data);
+  }
+  
+  onEvent(event: string, action: (...args: any[]) => void): void {
+    this.socket.on(event, action);
+  }
   // Vous pouvez ajouter des méthodes pour émettre des événements si nécessaire
   //public emitEvent(): void {
   //  this.socket.emit('test', 'Ceci est un message de test');
@@ -31,14 +37,16 @@ export class NotificationServiceService {
     this.socket.emit('paymentCompleted', data);
   }
 
- // Méthode générique pour émettre des événements
- public emitEvent(): void {
-  this.socket.emit('test', 'Ceci est un message de test');
-}
-
   onAppointmentNotification(callback: (data: any) => void) {
     this.socket.on('appointmentNotification', callback);
   }
   }
+
+
+
+
+
+  
+
 
 

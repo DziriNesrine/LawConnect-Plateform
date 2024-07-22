@@ -11,8 +11,7 @@ import { ChatService } from '../services/chat.service';
 })
 export class ChatComponent implements OnInit, AfterViewChecked{
 
-  @ViewChild('scrollMe')
-  private myScrollContainer!: ElementRef;
+  @ViewChild('scrollMe') private myScrollContainer!: ElementRef;
   public speciality: any=[];
   joinned: boolean = false;
   chats: any=[];
@@ -25,7 +24,7 @@ export class ChatComponent implements OnInit, AfterViewChecked{
   public notification : boolean=true
   public avocat:any=[]
   public avocatID : any
-  socket = io('http://localhost:5000');
+  socket = io('http://localhost:4600');
 
   constructor(private chatService: ChatService , private _myservice: ApiService , private renderer2: Renderer2,
     @Inject(DOCUMENT) private _document: Document) {}
@@ -95,7 +94,6 @@ export class ChatComponent implements OnInit, AfterViewChecked{
   }
 
   getChatByRoom(room: string , client: string | null) {
-    client = localStorage.getItem('id')
     this.chatService.getChatByRoom(room , client || '').then((res) => {
       this.chats = res;
     }).catch((err) => {
@@ -135,7 +133,7 @@ export class ChatComponent implements OnInit, AfterViewChecked{
     this.socket.emit('save-message', { room: this.sroom, clientName: clientName, message: 'Join this room', updated_at: date });
   }
 
-  public idcl!: string | null;
+  public idcl: string | null | undefined;
   joinRoomD(IDCL: string | null) {
     var date = new Date();
     this.idcl=IDCL
@@ -158,15 +156,16 @@ export class ChatComponent implements OnInit, AfterViewChecked{
     });
   }
   sendMessageAV() {
-    this.msgData.clientName=this.idcl
-    console.log(this.msgData)
+    this.msgData.clientName = this.idcl;
+    console.log(this.msgData);
     this.chatService.saveChat1(this.msgData).then((result) => {
-      this.socket.emit('save-message', result);
-      console.log(this.msgData)
-    }, (err) => {
-      console.log(err);
+        this.socket.emit('save-message', result);
+        console.log(this.msgData);
+    }).catch((err) => {
+        console.log(err);
     });
-  }
+}
+
   logoutID() {
     var date = new Date();
     this.client=localStorage.getItem('id')
@@ -179,14 +178,14 @@ export class ChatComponent implements OnInit, AfterViewChecked{
   /*=joinRoom() {
     var date = new Date();
     localStorage.setItem("user", JSON.stringify(this.newUser));
-    var patientName=localStorage.getItem('id')
-    this.getChatByRoom(this.newUser.room , this.newUser.patientName);
-    this.msgData = { room: this.newUser.room, patientName: this.newUser.patientName, message: '' };
+    var clientName=localStorage.getItem('id')
+    this.getChatByRoom(this.newUser.room , this.newUser.clientName);
+    this.msgData = { room: this.newUser.room, clientName: this.newUser.clientName, message: '' };
     this.joinned = true;
-    this.socket.emit('save-message', { room: this.newUser.room, patientName: this.newUser.patientName, message: 'Join this room', updated_at: date });
+    this.socket.emit('save-message', { room: this.newUser.room, clientName: this.newUser.clientName, message: 'Join this room', updated_at: date });
   }
   sendMessage() {
-    this.msgData.patientName=localStorage.getItem('id')
+    this.msgData.clientName=localStorage.getItem('id')
     this.chatService.saveChat(this.msgData).then((result) => {
       this.socket.emit('save-message', result);
       console.log(this.msgData)
@@ -197,8 +196,8 @@ export class ChatComponent implements OnInit, AfterViewChecked{
    logout() {
     var date = new Date();
     var user = JSON.parse(localStorage.getItem("user"));
-    user.patientName=localStorage.getItem('id')
-    this.socket.emit('save-message', { room: user.room, patientName: user.patientName, message: 'Left this room', updated_at: date });
+    user.clientName=localStorage.getItem('id')
+    this.socket.emit('save-message', { room: user.room, clientName: user.clientName, message: 'Left this room', updated_at: date });
     localStorage.removeItem("user");
     this.joinned = false;
   }*/

@@ -170,9 +170,9 @@
         <div class="chat-box-body" *ngIf="!joinned">
           <div #scrollMe class="chat-logs">
             <div *ngFor="let c of speciality">
-              <div class="col-12 row " style=" margin-left: 10px;">
+              <div class="col-12 row " >
                 <div class="col-3 ">
-                  <img  src={{c.image}} style="width: 60px; height: 60px;" alt="" class="chat-msg.user" />
+                <!--  <img  src={{c.image}} style="width: 60px; height: 60px;" alt="" class="chat-msg.user" /> -->
                 </div>
                 <div class="col-9 speciality" style=" margin-top: 15px;">
                   <a style="cursor: pointer;" (click)=" joinRoomID(c._id)"><b>{{ c.speciality }}</b></a>
@@ -261,7 +261,7 @@
           </div>
         </div>
   
-        <div #scrollMe class="chat-logs" *ngIf="joinned">
+        <div #scrollMe  *ngIf="joinned" class="chat-logs">
           <div *ngFor="let c of chats">
             <div class="col-12 row " *ngIf="c.avocatName !== null">
               <div class="col-3" >

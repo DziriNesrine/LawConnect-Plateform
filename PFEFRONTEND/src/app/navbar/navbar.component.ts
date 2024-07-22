@@ -46,24 +46,32 @@ export class NavbarComponent implements OnInit{
       console.log('Données reçues :', data);
     });*/
 
-    this.notificationService.onAppointmentNotification((data: any) => {
+    /*this.notificationService.onAppointmentNotification((data: any) => {
       console.log('Notification de rendez-vous reçue :', data);
       alert(data.message); // Afficher une alerte ou mettre à jour l'UI
-    });
+    });*/
 
-    
+    this.notificationService.onEvent('BackendEvent', (data) => {
+      console.log('Événement BackendEvent reçu dans le composant:', data);
+    });
+    this.notificationService.onEvent('appointmentNotification', (data) => {
+      console.log('Événement BackendEvent reçu dans le composant:', data);
+    });
 
     this.getCLID()
     this.getAVID()
-    this.testSocket()
+    /*this.testSocket()*/
 
 
   }
 
 // Émettre un événement Socket.io
-testSocket(): void {
+/*testSocket(): void {
   this.notificationService.emitEvent();
-}
+} */
+
+
+
 
 
   getCLID(){

@@ -1,5 +1,10 @@
 <div class="cont">
-  
+  <div class="into"
+    style="margin-bottom: 40px; font-family: cursive; font-size: 10px; margin-right: 30px; margin-left: 400px;">
+    <h5>
+      Prenez un rendez-vous en ligne
+    </h5>
+  </div>
   <div class="row" style="margin-left:200px;">
     <div class="input-recherche" style="margin-right: 10px;">
       <i class="fas fa-user"></i>
@@ -111,7 +116,9 @@
             <hr class="hr1">
             <i class="fas fa-money-check-alt"></i>&nbsp;Prix De Consultation: {{x.prix}} DT<br>
             <hr class="hr1">
-            <i class="fas fa-clock"></i>&nbsp;Prochain RDV: : {{x.calendar[0].date.substr(0, 10)}} {{x.calendar[0].date.substr(11, 5)}}<br>
+            <i class="fas fa-clock"></i>&nbsp;Prochain RDV: 
+            {{x.calendar?.[0]?.date ? (x.calendar[0].date.substr(0, 10) + ' ' + x.calendar[0].date.substr(11, 5)) : ''}}<br>
+            
             <hr class="hr1">
           </div>
           <i class="fas fa-map-marker-alt"></i>&nbsp;{{x.cityAV.city}}<br>

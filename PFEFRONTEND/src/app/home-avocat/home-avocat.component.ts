@@ -31,10 +31,10 @@ export class HomeAvocatComponent implements OnInit {
 
     ngOnInit(): void {
       const s = this.renderer2.createElement('script');
-    s.type = 'text/javascript';
-    s.src = '../../assets/js/vérife.js';
-    s.text = ``;
-    this.renderer2.appendChild(this._document.body, s);
+      s.type = 'text/javascript';
+      s.src = '../../assets/js/vérife.js';
+      s.text = ``;
+      this.renderer2.appendChild(this._document.body, s);
       this.getidAV()
   
     }

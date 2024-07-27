@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { NotificationServiceService } from '../services/notification-service.service';
+declare var bootstrap: any;
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -21,7 +22,6 @@ export class NavbarComponent implements OnInit{
   public  RendezVousValide : any=[]
   public notifpayement : any=[]
   images: any ;
-
 
   constructor(
    
@@ -54,7 +54,7 @@ export class NavbarComponent implements OnInit{
 
  
 this.getNotif()
-this.notifpayement=localStorage.getItem('notif')
+//this.notifpayement=localStorage.getItem('notif')
     this.getCLID()
     this.getAVID()
     /*this.testSocket()*/
@@ -66,17 +66,44 @@ this.notifpayement=localStorage.getItem('notif')
 /*testSocket(): void {
   this.notificationService.emitEvent();
 } */
+  openModal(): void {
+    var myModal = new bootstrap.Modal(document.getElementById('payer'), {
+      keyboard: false
+    });
+    myModal.show();
+  }
 
-
-getNotif(){
-  this.notificationService.onEvent('appointmentNotification', (data) => {
-    console.log('Événement BackendEvent reçu dans le composant:', data);
-    this.notifpayement.push(data)
-    console.log("messagede rendez(=-vous", this.notifpayement)
-    localStorage.setItem('notif', data);
-  });
+  getNotif(){
+    this.notifpayement = [];
+    const storedNotifPayement = localStorage.getItem('notifpayement');
+      const storedNotification = localStorage.getItem('notification');
   
-}
+    if (storedNotifPayement) {
+        this.notifpayement = JSON.parse(storedNotifPayement);
+    }
+  
+    if (storedNotification) {
+        this.notification = JSON.parse(storedNotification);
+     }
+    this.notificationService.onEvent('appointmentNotification', (data) => {
+    console.log('Événement BackendEvent reçu dans le composant:', data);
+    this.notifpayement.push(data);
+    localStorage.setItem('notifpayement', JSON.stringify(this.notifpayement));
+    localStorage.setItem('notification', JSON.stringify(this.notification));
+    this.notification=true
+    })
+    }
+    handleIconClick() {
+      this.notification =false;
+      localStorage.setItem('notification', JSON.stringify(this.notification));
+     
+    }
+    clearNotifications() {
+      localStorage.removeItem('notifpayement');
+      localStorage.removeItem('notification');
+      this.notifpayement = [];
+      this.notification = false;
+    }
 
 
   getCLID(){

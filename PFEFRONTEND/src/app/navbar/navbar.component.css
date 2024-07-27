@@ -594,3 +594,16 @@ input {
   color: #585858;
   color: grey;
 }
+
+
+/*css*/
+.icon_wrap.has_notifications:before {
+  content: ''; 
+  position: absolute;
+  top: 5px; 
+  right: 5px; 
+  width: 8px; 
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+}

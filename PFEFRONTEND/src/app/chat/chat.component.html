@@ -149,8 +149,8 @@
 <!--CLIENT-->
 
  <div id="body" *ngIf="login">
-    <div  class="header__notification" >
-      <i  style="size: 8em;  margin-top: 5px; margin-right: 0px; color:rgb(90, 86, 86)" class="fa fa-bell-o faa-ring animated fa-1x"  ></i>
+    <div *ngIf="notification" class="header__notification" >
+      <i  style="size: 8em; margin-left: 2px; margin-top: 5px;" class="fa fa-bell-o faa-ring animated fa-1x"  ></i>
       <b>{{nbN}}</b>
   
   </div>
@@ -252,9 +252,12 @@
                 <div class="col-3 ">
                   <img src="../../assets/image/cp.png" style="width: 90px; height: 90px;" alt="" class="chat-msg.user" />
                 </div>
-                <div class="col-9 speciality" style=" margin-top: 28px; ">
-                  <a style="cursor: pointer; text-transform: capitalize; margin-left: 20px;" (click)=" joinRoomD(c._id)"><b>{{ c.fNameCL }} {{ c.lNameCL }}</b></a>
+                <div *ngIf="c" class="col-9 speciality" style="margin-top: 28px;">
+                  <a style="cursor: pointer; text-transform: capitalize; margin-left: 20px;" (click)="joinRoomD(c._id)">
+                    <b>{{ c?.fNameCL }} {{ c?.lNameCL }}</b>
+                  </a>
                 </div>
+                
               </div>
               <hr>
             </div>
@@ -265,11 +268,13 @@
           <div *ngFor="let c of chats">
             <div class="col-12 row " *ngIf="c.avocatName !== null">
               <div class="col-3" >
-                <img style="width: 60px; height: 60px;margin-left: 20px;" src="../../assets/image/chatAV.png" alt="User Avatar"
+                  <img  *ngIf="!sexe" style="width: 60px; height: 60px; " src="../../assets/image/chatAV.png" alt="User Avatar"
+                  class="chat-msg.user" />
+                  <img  *ngIf="sexe" style="width: 60px; height: 60px; " src="../../assets/image/chatAV.png" alt="User Avatar"
                   class="chat-msg.user" />
               </div>
               <div class="col-9 " style="margin-top: 8px;">
-                <strong style="margin-left: 15px;" >{{ c.message }} </strong>
+                <strong> {{ c.message }} </strong>
                 <p style="margin-left: 15px;" class="glyphicon glyphicon-time"> {{ c.updated_at | date: 'medium' }} </p>
               </div>
             </div>

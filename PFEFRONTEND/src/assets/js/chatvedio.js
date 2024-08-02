@@ -7,7 +7,7 @@ const remoteVideoComponent = document.getElementById('remote-video')
 console.log( videoChatContainer  , localVideoComponent , remoteVideoComponent)
 
 // Variables.
-socket = io('http://localhost:4100');
+socket = io('http://localhost:4600');
 const mediaConstraints = {
   audio: true,
   video: { },

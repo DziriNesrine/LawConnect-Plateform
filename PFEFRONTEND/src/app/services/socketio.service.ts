@@ -25,6 +25,14 @@ export class SocketioService {
   //Linear list for ease of rendering.
   peerList: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
+  emit(eventName: string, data: any): void {
+    this.socket.emit(eventName, data);
+  }
+
+  on(eventName: string, callback: (data: any) => void): void {
+    this.socket.on(eventName, callback);
+  }
+
   //New socket connection.
   setupSocketConnection() {
     this.socket = io(environment.SOCKET_ENDPOINT);

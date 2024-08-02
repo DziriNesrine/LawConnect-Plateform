@@ -16,6 +16,7 @@ export class HomeAvocatComponent implements OnInit {
   public rendez_vousValide:any
   public client : any = []
   joinGroupForm: FormGroup;
+  isFormOpen = false;
 
   constructor( private _myservice: ApiService,
     private router :Router ,
@@ -33,12 +34,10 @@ export class HomeAvocatComponent implements OnInit {
       const s = this.renderer2.createElement('script');
       s.type = 'text/javascript';
       s.src = '../../assets/js/vérife.js';
-      s.text = ``;
       this.renderer2.appendChild(this._document.body, s);
       this.getidAV()
   
     }
-  
     getidAV(){
       this.avocatid=localStorage.getItem('idAV')
       this.getRendez_vous()
@@ -82,6 +81,11 @@ export class HomeAvocatComponent implements OnInit {
     localStorage.setItem('room', idroom)
     
   }
+
+
+  
+
+
   deleteRV(id: string){
     this._myservice.delete(id)
     .subscribe(() => {

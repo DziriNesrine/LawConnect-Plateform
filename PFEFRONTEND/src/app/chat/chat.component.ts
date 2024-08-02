@@ -134,17 +134,44 @@ export class ChatComponent implements OnInit, AfterViewChecked{
   }
 
   public idcl: string | null | undefined;
+
   joinRoomD(IDCL: string | null) {
-    var date = new Date();
-    this.idcl=IDCL
-    console.log(IDCL)
-    var speciallity = this.avocat[0].specialityAV._id
-    this.getChatByRoom(speciallity , this.idcl);
-    this.msgData = { room: speciallity,avocatName: this.avocatID, clientName: IDCL,  message: '' };
+    if (!IDCL) {
+      console.error('Client ID is null or undefined');
+      return;
+    }
+  
+    const date = new Date();
+    this.idcl = IDCL;
+    console.log(IDCL);
+  
+    if (!this.avocat || !this.avocat[0] || !this.avocat[0].specialityAV) {
+      console.error('Avocat speciality is not defined');
+      return;
+    }
+  
+    const speciallity = this.avocat[0].specialityAV._id;
+    this.getChatByRoom(speciallity, this.idcl);
+    
+    this.msgData = { 
+      room: speciallity, 
+      avocatName: this.avocatID, 
+      clientName: IDCL,  
+      message: '' 
+    };
+    
     this.joinned = true;
     this.scrollToBottom();
-    this.socket.emit('save-message', { room: speciallity,avocatName: this.avocatID, clientName: IDCL, message: 'Join this room', updated_at: date });
+    
+    this.socket.emit('save-message', { 
+      room: speciallity, 
+      avocatName: this.avocatID, 
+      clientName: IDCL, 
+      message: 'Join this room', 
+      updated_at: date 
+    });
   }
+  
   sendMessageID() {
     this.msgData.clientName=localStorage.getItem('id')
     this.msgData.room=this.sroom

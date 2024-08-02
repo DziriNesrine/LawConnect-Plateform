@@ -41,6 +41,8 @@ export class NavbarComponent implements OnInit{
     s.text = ``;
     this.renderer2.appendChild(this._document.body, s);
 
+    
+
 
    /* this.notificationService.socket.on('appointmentNotification', (data: any) => {
       // Traitez les données reçues ici
@@ -66,11 +68,10 @@ this.getNotif()
 /*testSocket(): void {
   this.notificationService.emitEvent();
 } */
-  openModal(): void {
-    var myModal = new bootstrap.Modal(document.getElementById('payer'), {
-      keyboard: false
-    });
-    myModal.show();
+  openmodel()  {
+    this.router.navigate([
+      '/home/video'
+    ]);
   }
 
   getNotif(){
@@ -87,22 +88,28 @@ this.getNotif()
      }
     this.notificationService.onEvent('appointmentNotification', (data) => {
     console.log('Événement BackendEvent reçu dans le composant:', data);
+    if(this.clientid==data.clientId){
     this.notifpayement.push(data);
     localStorage.setItem('notifpayement', JSON.stringify(this.notifpayement));
     localStorage.setItem('notification', JSON.stringify(this.notification));
     this.notification=true
-    })
+    }})
     }
     handleIconClick() {
-      this.notification =false;
+      this.notification =true;
       localStorage.setItem('notification', JSON.stringify(this.notification));
-     
     }
+    
+     /* handleIconClick() {
+        // Logique pour gérer le clic sur l'icône
+        this.auth = true; // Affiche la popup en définissant auth à true
+        localStorage.setItem('auth', JSON.stringify(this.auth));
+      }*/
     clearNotifications() {
       localStorage.removeItem('notifpayement');
       localStorage.removeItem('notification');
       this.notifpayement = [];
-      this.notification = false;
+      this.notification = true;
     }
 
 

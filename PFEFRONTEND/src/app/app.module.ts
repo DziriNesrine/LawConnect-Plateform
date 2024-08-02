@@ -27,6 +27,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { PaiementComponent } from './paiement/paiement.component';
 const config: SocketIoConfig = { url: 'http://localhost:4600', options: {} };
 
 @NgModule({
@@ -46,7 +47,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4600', options: {} };
     VideoComponent,
     ChatComponent,
     PiecesjustificativesComponent,
-    Calandrier1Component
+    Calandrier1Component,
+    PaiementComponent
   ],
   imports: [
     BrowserModule,

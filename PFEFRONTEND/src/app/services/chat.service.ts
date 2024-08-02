@@ -8,15 +8,18 @@ export class ChatService {
   
   constructor(private http: HttpClient) { }
 
-  getChatByRoom(room: string , clientName: string) {
+  getChatByRoom(room: string, clientName: string) {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:5000/users/chat/' + room +'/'+ clientName )
-        .subscribe(res => {
-          console.log(res)
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
+      this.http.get(`http://localhost:5000/users/chat/${room}/${clientName}`)
+        .subscribe(
+          res => {
+            console.log(res);
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
     });
   }
    getChatByRoomID(room: string ) {

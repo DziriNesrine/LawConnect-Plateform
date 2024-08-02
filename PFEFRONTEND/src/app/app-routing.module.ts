@@ -15,6 +15,7 @@ import { CalandrierComponent } from './calandrier/calandrier.component';
 import { VideoComponent } from './video/video.component';
 import { ChatComponent } from './chat/chat.component';
 import { Calandrier1Component } from './calandrier1/calandrier1.component';
+import { PaiementComponent } from './paiement/paiement.component';
 
 
 
@@ -36,6 +37,7 @@ const routes: Routes = [
        {path: 'editProfilAvocat' , component:EditAvocatComponent },
       {path: 'calendrier' , component:Calandrier1Component},
       {path: 'video' , component:VideoComponent},
+      {path: 'paiement' , component:PaiementComponent},
 
     ],canActivate: [AuthGuard]},
 ];

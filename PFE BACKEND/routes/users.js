@@ -11,7 +11,7 @@ const contrS = require('../controller/contS');
 const contrAV = require('../controller/contAV');
 const contrCL= require('../controller/contCL');
 const contrReserv=require('../controller/contReserv');
-const { getRS } = require('../controller/contReserv');
+const { getReservations } = require('../controller/contReserv');
 const { addAvis } = require('../controller/contAvis');
 const { getCID, rendez_vous, getCV } = require('../controller/contC');
 const { messageCL, messageAV } = require('../controller/contChat');
@@ -78,9 +78,6 @@ router.delete('/deleteCL/:id' ,deleteCL);
 router.post('/city', addC);
 router.get('/getC', getC);
 
-/*CRUD Reservation*/
-router.get('/getRS', getRS);
-
 /* CRUD speciality*/
 router.post('/speciality', addS);
 router.post('/file/:id', upload.single('file'), image)
@@ -111,6 +108,9 @@ router.get('/chatR/:room',getchatIDR);
 router.get('/chatCL/:clientName',getchatID);
 router.post('/chatcl',messageCL);
 router.post('/chatAV',messageAV);
+
+/* CRUD Reservation */
+router.get('/reservations', getReservations);
 
 //setup of dependencies
 /*server.listen(4000);*/

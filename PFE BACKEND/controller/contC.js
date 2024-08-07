@@ -236,38 +236,31 @@ getRendezClient=(req,res,next)=>{
 
 
 
-paye =(req, res, next) => {
-    console.log(req.file.filename);
-    const file = req.file;
-    console.log("NESRINE")
-    if (!file) {
-      const error = new Error('No File')
-      error.httpStatusCode = 400
-      return next(error)}
-      console.log("HMD")
-    const payer = {
-            paye: "http://localhost:5000/images/"+req.file.filename,
-            }
-    console.log(payer)
-    
-   Calendar.findOneAndUpdate({ _id: req.params.id }, { $set: payer }).
-                  then(resault => {
-                      if (resault) {
-                         
-                          res.status(202).send(['image apdated']);
-          
-                      } else {
-                          res.status(404).json({
-                              massage: 'calender  not found'
-          
-                          })
-                      }
-                  }).catch(err => {
-                      res.status(404).json({
-                          massage: err
-                      })
-                  })}
-          
+                 paye = (req, res, next) => {
+                  console.log('Received ID:', req.params.id); // Vérifiez l'ID reçu
+              
+                  const file = req.file;
+                  console.log("File received");
+              
+                  if (!file) {
+                      const error = new Error('No File');
+                      error.httpStatusCode = 400;
+                      return next(error);
+                  }
+              
+                  const payer = {
+                      paye: "http://localhost:5000/images/" + req.file.filename, // URL du fichier stocké
+                  };
+              
+                  console.log('File URL:', payer.paye);
+              
+                  // Répondre avec succès
+                  res.status(200).json({
+                      message: 'File uploaded successfully',
+                      fileUrl: payer.paye
+                  });
+              }
+              
 
 
 

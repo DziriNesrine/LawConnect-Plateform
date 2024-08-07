@@ -51,13 +51,15 @@
   <div class="app-main">
 
     <div class="video-call-wrapper video-chat-container">
-      <div id="video-chat-container" class="video-position" [ngStyle]="{'display': chatVisible ? 'block' : 'none'}">
+      <div id="video-chat-container" class="video-position" >
         <video class="local-video" autoplay id="local-video" muted></video>
+        
         <div class="remote-video">
           <video id="remote-video" autoplay></video>
         </div>
       </div>
     </div>
+    
     
 
     <div class="video-call-actions">
@@ -65,7 +67,7 @@
       <button id="connect-button" class="video-action-button camera" (click)="startCall()"></button>
       <button class="video-action-button maximize"></button>
       <button  *ngIf="auth" class="video-action-button endcall">
-        <a  autocomplete="off" data-bs-toggle="modal" data-bs-target="#exampleModal">Leave</a>
+        <a  autocomplete="off" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openmodel()">Leave</a>
 
     </button>
     <button  *ngIf="!auth" class="video-action-button endcall">
@@ -115,4 +117,10 @@
   </div>
 </div>
 </div>
+
+
+
+
+
+
 

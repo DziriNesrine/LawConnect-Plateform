@@ -100,10 +100,17 @@ export class PaiementComponent implements OnInit{
 
 
   onSubmit() {
-    const id = this.RendezVousClient[0]._id;
+    const id = "66a01fb0f5ffaa6eb31607e2"; // ID client fixe
+  
+    // Vérifiez si this.images contient un fichier
+    if (!(this.images instanceof File)) {
+      console.error('Invalid file input');
+      return;
+    }
+  
     const formData = new FormData();
     formData.append('file', this.images);
-
+  
     this.http.post<any>(`http://localhost:5000/users/payer/${id}`, formData).subscribe(
       (res) => {
         console.log(res);
@@ -112,11 +119,14 @@ export class PaiementComponent implements OnInit{
           clientId: this.clientid,
           message: 'Paiement réussi'
         });
+        // Redirection vers l'interface de vidéo
         this.router.navigate(['home/video']);
       },
       (err) => console.log(err)
     );
   }
+  
+  
 
 
 }

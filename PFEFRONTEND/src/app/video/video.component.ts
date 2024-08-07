@@ -131,8 +131,10 @@ export class VideoComponent implements OnInit {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then(stream => {
         const localVideo = document.getElementById('local-video') as HTMLVideoElement;
+        const remoteVideo = document.getElementById('remote-video') as HTMLVideoElement;
         if (localVideo) {
           localVideo.srcObject = stream;
+          remoteVideo.srcObject = stream;
         }
         this.localStream = stream;
         this.socketService.addStream(stream);
@@ -162,7 +164,7 @@ export class VideoComponent implements OnInit {
 
 
 
-  getid(): void {
+  getid() {
     this.clientid = localStorage.getItem('id');
     if (this.clientid != null) {
       this.getClient();
@@ -170,13 +172,13 @@ export class VideoComponent implements OnInit {
     }
   }
 
-  getClient(): void {
+  getClient() {
     this._myservice.getClient(this.clientid).subscribe((res) => {
       this.client = res;
     });
   }
 
-  getidAV(): void {
+  getidAV() {
     this.avocatid = localStorage.getItem('idAV');
     if (this.avocatid != null) {
       this.getAvocat();
@@ -184,13 +186,13 @@ export class VideoComponent implements OnInit {
     }
   }
 
-  getAvocat(): void {
+  getAvocat() {
     this._myservice.getAvocat(this.avocatid).subscribe((res) => {
       this.avocat = res;
     });
   }
 
-  joinRoom(): void {
+  joinRoom() {
     const roomId = localStorage.getItem('room');
     if (roomId) {
       this.socketService.joinRoom(roomId, true);
@@ -199,13 +201,14 @@ export class VideoComponent implements OnInit {
     }
   }
 
-  avis(nb: number): void {
+  avis(nb: number) {
     this.Avis.nbAvis = nb;
     this.Avis.clientID = this.clientid;
     this.Avis.avocatID = "663d748b3b91ae732c87ddf9";
     this._myservice.postAvis(this.Avis)
       .subscribe(
         data => {
+          console.log(data);
           window.location.reload();
         },
         error => {
@@ -215,4 +218,11 @@ export class VideoComponent implements OnInit {
         }
       );
   }
+
+  openmodel()  {
+    this.router.navigate([
+      '/home/Avocat'
+    ]);
+  }
+
 }

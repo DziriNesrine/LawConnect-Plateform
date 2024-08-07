@@ -70,7 +70,7 @@ this.getNotif()
 } */
   openmodel()  {
     this.router.navigate([
-      '/home/video'
+      '/home/paiement'
     ]);
   }
 
